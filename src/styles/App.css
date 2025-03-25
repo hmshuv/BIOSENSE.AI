@@ -1,0 +1,136 @@
+/* ============= Global Reset (if you haven't already) ============= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============= Container for the Home Page ============= */
+.home-container {
+  background-color: #222; 
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* ============= Intro Section ============= */
+.intro-section {
+  margin-bottom: 2rem;
+}
+
+.intro-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.intro-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.intro-description {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.5;
+}
+
+/* ============= Cards Container ============= */
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Reusable card style */
+.info-card {
+  background-color: #333;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left; /* left-align the text within the card */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-paragraph {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.features-list {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.8;
+}
+
+/* ============= CTA Cards ============= */
+.cta-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.cta-card {
+  background-color: #333;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-button {
+  background-color: #6200ee;
+  color: #fff;
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+/* ============= Animations ============= */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 
+  Utility classes to attach animations:
+  - animate-fade-in-down
+  - animate-scale-in
+  When elements mount, these will run the animations.
+*/
+.animate-fade-in-down {
+  animation: fadeInDown 1s ease forwards;
+  opacity: 0; /* ensure hidden before animation runs */
+}
+.animate-scale-in {
+  animation: scaleIn 0.8s ease forwards;
+  opacity: 0;
+}
