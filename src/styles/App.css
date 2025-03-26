@@ -1,104 +1,99 @@
-/* ============= Global Reset (if you haven't already) ============= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* ============= Container for the Home Page ============= */
+/* ===== Overall Container ===== */
 .home-container {
-  background-color: #222; 
+  background-color: #222;
   color: #fff;
   min-height: 100vh;
-  padding: 2rem;
-  text-align: center;
 }
 
-/* ============= Intro Section ============= */
+/* ===== Two Background Sections ===== */
+.intro-about-bg,
+.features-cta-bg {
+  position: relative; /* Allows us to place an overlay via ::before */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 80vh;
+  padding: 3rem 2rem;
+}
+
+/* 
+  The overlay pseudo-element that dims the background
+  (Adjust the 0.3 to 0.5, 0.7, etc. for a darker/lighter overlay)
+*/
+.intro-about-bg::before,
+.features-cta-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 0;
+}
+
+/* Ensure the child elements (text/cards) appear above the overlay */
+.intro-about-bg > *,
+.features-cta-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Intro Section ===== */
 .intro-section {
   margin-bottom: 2rem;
+  text-align: center; 
+  font-size: 2rem; 
+  /* If you want black text for the intro, uncomment:
+     color: #000;
+  */
 }
 
-.intro-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.intro-subtitle {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #ccc;
-}
-
-.intro-description {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto 2rem auto;
-  line-height: 1.5;
-}
-
-/* ============= Cards Container ============= */
-.cards-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-/* Reusable card style */
+/* ===== Card Elements ===== */
 .info-card {
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.6); /* slight transparency for readability */
+  margin: 2rem auto;
   padding: 2rem;
   border-radius: 8px;
   max-width: 800px;
-  margin: 0 auto;
-  text-align: left; /* left-align the text within the card */
+  /* text-align: left;  <-- Add if you prefer left-aligned text inside cards */
 }
 
-.card-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.about-card {
+  /* Extra styling for "About" card if desired */
 }
 
-.card-paragraph {
-  margin-bottom: 1rem;
-  line-height: 1.6;
+.features-card {
+  /* Extra styling for "Features" card if desired */
 }
 
-.features-list {
-  list-style: none;
-  padding-left: 0;
-  line-height: 1.8;
-}
-
-/* ============= CTA Cards ============= */
+/* ===== CTA Cards ===== */
 .cta-cards-wrapper {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-bottom: 3rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
 }
 
 .cta-card {
-  background-color: #333;
+  background-color: rgba(0,0,0,0.6);
   padding: 2rem;
   border-radius: 8px;
-  max-width: 600px;
-  margin: 0 auto;
+  /* text-align: left; or center as you prefer */
 }
 
-.cta-button {
+.cta-card button {
   background-color: #6200ee;
   color: #fff;
   border: none;
   padding: 1rem 1.5rem;
   cursor: pointer;
-  font-size: 1rem;
   border-radius: 4px;
   margin-top: 1rem;
 }
 
-/* ============= Animations ============= */
+/* ===== Animations ===== */
 @keyframes fadeInDown {
   0% {
     opacity: 0;
@@ -109,6 +104,7 @@
     transform: translateY(0);
   }
 }
+
 @keyframes scaleIn {
   0% {
     opacity: 0;
@@ -120,16 +116,12 @@
   }
 }
 
-/* 
-  Utility classes to attach animations:
-  - animate-fade-in-down
-  - animate-scale-in
-  When elements mount, these will run the animations.
-*/
+/* Utility classes to apply animations on page load */
 .animate-fade-in-down {
-  animation: fadeInDown 1s ease forwards;
-  opacity: 0; /* ensure hidden before animation runs */
+  animation: fadeInDown 0.8s ease forwards;
+  opacity: 0; /* hidden until animation runs */
 }
+
 .animate-scale-in {
   animation: scaleIn 0.8s ease forwards;
   opacity: 0;
